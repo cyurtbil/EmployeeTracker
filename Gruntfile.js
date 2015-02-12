@@ -17,6 +17,11 @@ module.exports = function(grunt) {
           open: true
         }
       }
+    },
+    wiredep: {
+      task: {
+        src: ['app/index.html'],
+      }
     }
   });
 // ========================================================
@@ -24,11 +29,12 @@ module.exports = function(grunt) {
 // Loading npm tasks
 // ========================================================
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-wiredep');
 // ========================================================
 
 // Register npm tasks
 // ========================================================
-  grunt.registerTask('default', ['connect']);
+  grunt.registerTask('default', ['connect', 'wiredep']);
 // ======================================================== 
 
 

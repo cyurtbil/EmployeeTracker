@@ -34,6 +34,16 @@ module.exports = function(grunt) {
         'app/scripts/*',
         'test/spec/*'
       ]
+    },
+    sass: {
+      dist: {
+        files: {
+          'app/stylesheets/main.css': 'app/sass/main.sass'
+        },
+        options: {
+          compass: true
+        }
+      }
     }
   });
 // ========================================================
@@ -43,11 +53,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-wiredep');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 // ========================================================
 
 // Register npm tasks
 // ========================================================
-  grunt.registerTask('default', ['connect', 'wiredep', 'jshint']);
+  grunt.registerTask('default', ['connect', 'wiredep', 'jshint', 'sass']);
 // ======================================================== 
 
 

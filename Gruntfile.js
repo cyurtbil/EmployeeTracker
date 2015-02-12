@@ -1,5 +1,6 @@
-module.exports = function(grunt) {
+'use strict';
 
+module.exports = function(grunt) {
 
 // Initial configuration
 // ========================================================
@@ -8,9 +9,9 @@ module.exports = function(grunt) {
     connect: {
       server: { // task name
         options: {
-          port: "8000",
-          protocol: "http",
-          hostname: "localhost",
+          port: '8000',
+          protocol: 'http',
+          hostname: 'localhost',
           base: './app',
           keepalive: true,
           livereload: true,
@@ -22,6 +23,17 @@ module.exports = function(grunt) {
       task: {
         src: ['app/index.html'],
       }
+    },
+    jshint: {
+      options: {
+        reporter: require('jshint-stylish'),
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'GruntFile.js',
+        'app/scripts/*',
+        'test/spec/*'
+      ]
     }
   });
 // ========================================================
@@ -30,11 +42,12 @@ module.exports = function(grunt) {
 // ========================================================
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-wiredep');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 // ========================================================
 
 // Register npm tasks
 // ========================================================
-  grunt.registerTask('default', ['connect', 'wiredep']);
+  grunt.registerTask('default', ['connect', 'wiredep', 'jshint']);
 // ======================================================== 
 
 

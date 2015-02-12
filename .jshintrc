@@ -1,0 +1,18 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "browser": true,
+  "newcap": true,
+  "bitwise": true,
+  "camelcase": true,
+  "strict": true,
+  "immed": true,
+  "indent": 2,
+  "latedef": true,
+  "undef": true,
+  "unused": true,
+  "noarg": true,
+  "quotmark": "single",
+  "jquery": true 
+}

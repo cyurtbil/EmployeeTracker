@@ -12,7 +12,7 @@ module.exports = function(grunt) {
           port: '8000',
           protocol: 'http',
           hostname: 'localhost',
-          base: './app',
+          base: 'app',
           keepalive: true,
           livereload: true,
           open: true
@@ -44,6 +44,29 @@ module.exports = function(grunt) {
           compass: true
         }
       }
+    },
+    watch: {
+      options: {
+        livereload: true
+      },
+      styles: {
+        files: ['app/sass/*.sass'],
+        tasks: ['sass'],
+        options: {
+          livereload: true
+        }
+      },
+      scripts: {
+        files: ['app/scripts/*.js', 'GruntFile.js'],
+        tasks: ['jshint'],
+        options: {
+          livereload: true
+        }
+      },
+      bower: {
+        files: ['bower.json'],
+        tasks: ['wiredep']
+      }
     }
   });
 // ========================================================
@@ -59,8 +82,7 @@ module.exports = function(grunt) {
 
 // Register npm tasks
 // ========================================================
-  grunt.registerTask('default', ['connect', 'wiredep', 'jshint', 'sass']);
+  grunt.registerTask('default', ['connect', 'wiredep', 'jshint', 'sass', 'watch']);
 // ======================================================== 
-
 
 };
